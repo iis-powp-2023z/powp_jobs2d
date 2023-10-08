@@ -37,6 +37,6 @@ public class BaseAdapter implements Job2dDriver {
 
 	@Override
 	public String toString() {
-		return "BaseAdapter value";
+		return "BaseAdapter mode";
 	}
 }
