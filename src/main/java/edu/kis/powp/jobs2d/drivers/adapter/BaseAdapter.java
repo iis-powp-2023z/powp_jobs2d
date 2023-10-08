@@ -28,6 +28,7 @@ public class BaseAdapter extends DrawPanelController implements Job2dDriver {
 		line.setEndCoordinates(x, y);
 
 		drawLine(line);
+		setPosition(x, y);
 	}
 
 	@Override
