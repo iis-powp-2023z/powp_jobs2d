@@ -10,10 +10,10 @@ import javax.swing.*;
 /**
  * driver adapter to drawer with several bugs.
  */
-public class MyAdapter extends DrawPanelController implements Job2dDriver {
+public class BaseAdapter extends DrawPanelController implements Job2dDriver {
 	private int startX = 0, startY = 0;
 
-	public MyAdapter(JPanel panel) {
+	public BaseAdapter(JPanel panel) {
 		//super();
 		initialize(panel);
 	}
