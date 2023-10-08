@@ -36,9 +36,9 @@ public class BaseAdapter implements Job2dDriver {
 		} else if(Objects.equals(mode, "special")) {
 			line = LineFactory.getSpecialLine();
 		}
-		line.setStartCoordinates(this.startX, this.startY);
-		line.setEndCoordinates(x, y);
 		try {
+			line.setStartCoordinates(this.startX, this.startY);
+			line.setEndCoordinates(x, y);
 			drawPanelController.drawLine(line);
 		} catch (Exception e) {
 			throw new RuntimeException("drawPanelController can not be null value");
