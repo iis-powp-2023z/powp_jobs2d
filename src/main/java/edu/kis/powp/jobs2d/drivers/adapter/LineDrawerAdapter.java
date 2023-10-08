@@ -1,35 +1,16 @@
 package edu.kis.powp.jobs2d.drivers.adapter;
 
 import edu.kis.legacy.drawer.panel.DrawPanelController;
-import edu.kis.legacy.drawer.shape.ILine;
-import edu.kis.legacy.drawer.shape.LineFactory;
-import edu.kis.powp.jobs2d.Job2dDriver;
 
-public class LineDrawerAdapter implements Job2dDriver {
-    private int startX = 0, startY = 0;
-    private DrawPanelController drawPanelController;
+public class LineDrawerAdapter extends BaseAdapter {
 
     public LineDrawerAdapter(DrawPanelController drawPanelController) {
-        this.drawPanelController = drawPanelController;
-    }
-
-    @Override
-    public void setPosition(int x, int y) {
-        this.startX = x;
-        this.startY = y;
+        super(drawPanelController);
     }
 
     @Override
     public void operateTo(int x, int y) {
-        ILine line = LineFactory.getSpecialLine();
-        line.setStartCoordinates(this.startX, this.startY);
-        line.setEndCoordinates(x, y);
-        try {
-            drawPanelController.drawLine(line);
-        } catch (Exception e) {
-            throw new RuntimeException("drawPanelController can not be null value");
-        }
-        this.setPosition(x, y);
+        this.draw(x, y, "special");
     }
 
     @Override
