@@ -36,12 +36,16 @@ public class BaseAdapter implements Job2dDriver {
 		} else if(Objects.equals(mode, "special")) {
 			line = LineFactory.getSpecialLine();
 		}
+
 		try {
+			if(line == null || drawPanelController == null) {
+				throw new AssertionError("drawPanelController and line can not be null value");
+			}
 			line.setStartCoordinates(this.startX, this.startY);
 			line.setEndCoordinates(x, y);
 			drawPanelController.drawLine(line);
 		} catch (Exception e) {
-			throw new RuntimeException("drawPanelController can not be null value");
+			throw new RuntimeException("drawPanelController and line can not be null value");
 		}
 		this.setPosition(x, y);
 	}
