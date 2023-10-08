@@ -13,10 +13,17 @@ import javax.swing.*;
  */
 public class BaseAdapter extends DrawPanelController implements Job2dDriver {
 	private int startX = 0, startY = 0;
+	private DrawPanelController drawPanelController;
 
 	public BaseAdapter() {
 		super();
 	}
+
+
+	public BaseAdapter(DrawPanelController drawPanelController) {
+		this.drawPanelController = drawPanelController;
+	}
+
 
 	@Override
 	public void setPosition(int x, int y) {
@@ -29,7 +36,7 @@ public class BaseAdapter extends DrawPanelController implements Job2dDriver {
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
-		DrawerFeature.getDrawerController().drawLine(line);
+		drawPanelController.drawLine(line);
 		setPosition(x, y);
 	}
 
