@@ -13,6 +13,9 @@ public class DrawerJob2dDriverAdapter implements Job2dDriver {
 	private final DrawPanelController drawPanelController;
 
 	public DrawerJob2dDriverAdapter(DrawPanelController controller) {
+		if (controller == null) {
+			throw new IllegalArgumentException("Provided controller mustn't be null!");
+		}
 		this.drawPanelController = controller;
 	}
 
@@ -32,7 +35,7 @@ public class DrawerJob2dDriverAdapter implements Job2dDriver {
 		try {
 			drawPanelController.drawLine(line);
 		} catch (Exception e) {
-			throw new RuntimeException("drawPanelController can not be null value");
+			throw new RuntimeException("drawPanelController mustn't has null value");
 		}
 	}
 
