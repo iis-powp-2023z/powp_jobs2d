@@ -6,7 +6,7 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
 /**
- * driver adapter to drawer with several bugs.
+ * driver adapter to drawer.
  */
 public class DrawerJob2dDriverAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
@@ -29,7 +29,11 @@ public class DrawerJob2dDriverAdapter implements Job2dDriver {
 		line.setEndCoordinates(x, y);
 		setPosition(x,y);
 
-		drawPanelController.drawLine(line);
+		try {
+			drawPanelController.drawLine(line);
+		} catch (Exception e) {
+			throw new RuntimeException("drawPanelController can not be null value");
+		}
 	}
 
 	@Override
