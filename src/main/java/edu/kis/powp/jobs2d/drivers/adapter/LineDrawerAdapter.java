@@ -5,14 +5,11 @@ import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
-/**
- * driver adapter to drawer.
- */
-public class DrawerJob2dDriverAdapter implements Job2dDriver {
+public class LineDrawerAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
 	private final DrawPanelController drawPanelController;
 
-	public DrawerJob2dDriverAdapter(DrawPanelController controller) {
+	public LineDrawerAdapter(DrawPanelController controller) {
 		if (controller == null) {
 			throw new IllegalArgumentException("Provided controller mustn't be null!");
 		}
@@ -27,7 +24,7 @@ public class DrawerJob2dDriverAdapter implements Job2dDriver {
 
 	@Override
 	public void operateTo(int x, int y) {
-		ILine line = LineFactory.getBasicLine();
+		ILine line = LineFactory.getSpecialLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 		setPosition(x,y);
@@ -41,6 +38,6 @@ public class DrawerJob2dDriverAdapter implements Job2dDriver {
 
 	@Override
 	public String toString() {
-		return "Solid line simulator";
+		return "Dashed line simulator";
 	}
 }
