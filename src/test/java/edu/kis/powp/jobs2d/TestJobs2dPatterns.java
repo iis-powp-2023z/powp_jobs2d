@@ -33,10 +33,9 @@ public class TestJobs2dPatterns {
 
 	/**
 	 * Setup driver manager, and set default driver for application.
-	 * 
-	 * @param application Application context.
+	 *
 	 */
-	private static void setupDrivers(Application application) {
+	private static void setupDrivers() {
 		Job2dDriver loggerDriver = new LoggerDriver();
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
@@ -91,7 +90,7 @@ public class TestJobs2dPatterns {
 				setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
-				setupDrivers(app);
+				setupDrivers();
 				setupPresetTests(app);
 				setupLogger(app);
 
