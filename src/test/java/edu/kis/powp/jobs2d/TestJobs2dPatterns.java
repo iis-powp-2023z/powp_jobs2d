@@ -7,8 +7,10 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.BaseAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTest2FigureOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -32,7 +34,16 @@ public class TestJobs2dPatterns {
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		application.addTest("Pata Terna Test", selectTestFigure2OptionListener);
+
+		SelectTest2FigureOptionListener selectAdapterTestOptionListener = new SelectTest2FigureOptionListener(
+				DriverFeature.getDriverManager());
+		application.addTest("Adapter Driver Test (Basic Line)", selectAdapterTestOptionListener);
+
+		SelectTest2FigureOptionListener selectSpecialLineAdapterTestOptionListener = new SelectTest2FigureOptionListener(
+				DriverFeature.getDriverManager());
+		application.addTest("Adapter Driver Test (Special Line)", selectSpecialLineAdapterTestOptionListener);
 	}
+
 
 	/**
 	 * Setup driver manager, and set default driver for application.
@@ -47,8 +58,15 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new BaseAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
+		Job2dDriver adapterDriverBasicLine = new LineDrawerAdapter(LineFactory.getBasicLine());
+		DriverFeature.addDriver("Adapter Driver (Basic Line)", adapterDriverBasicLine);
+
+		Job2dDriver adapterDriverSpecialLine = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Adapter Driver (Special Line)", adapterDriverSpecialLine);
+
 		DriverFeature.updateDriverInfo();
 	}
+
 
 	/**
 	 * Auxiliary routines to enable using Buggy Simulator.
