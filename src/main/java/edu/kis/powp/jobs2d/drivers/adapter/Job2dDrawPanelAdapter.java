@@ -6,15 +6,13 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 
-import javax.swing.*;
-
 /**
  * driver adapter to drawer with several bugs.
  */
-public class DrawerPanelAdapter extends DrawPanelController implements Job2dDriver {
+public class Job2dDrawPanelAdapter extends DrawPanelController implements Job2dDriver {
 	private int startX = 0, startY = 0;
 
-	public DrawerPanelAdapter() {
+	public Job2dDrawPanelAdapter() {
 		super();
 	}
 
