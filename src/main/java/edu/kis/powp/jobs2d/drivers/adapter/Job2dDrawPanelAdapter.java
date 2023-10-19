@@ -37,6 +37,6 @@ public class Job2dDrawPanelAdapter extends DrawPanelController implements Job2dD
 
 	@Override
 	public String toString() {
-		return "DrawerPanelAdapter";
+		return "Job2dDrawPanelAdapter";
 	}
 }
