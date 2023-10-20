@@ -16,6 +16,8 @@ import edu.kis.powp.jobs2d.features.DriverFeature;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	public static final String FIGURE_JOE_1_NAME = "Figure Joe 1";
+	public static final String FIGURE_JOE_2_NAME = "Figure Joe 2";
 
 	/**
 	 * Setup test concerning preset figures in context.
@@ -26,7 +28,8 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest(FIGURE_JOE_1_NAME, selectTestFigureOptionListener);
+		application.addTest(FIGURE_JOE_2_NAME, selectTestFigureOptionListener);
 	}
 
 	/**

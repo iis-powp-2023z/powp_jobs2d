@@ -28,9 +28,7 @@ public class DummyDrawingAdapter extends DrawPanelController implements Job2dDri
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
-
-		startX = x;
-		startY = y;
+		setPosition(x, y);
 
 		drawPanelController.drawLine(line);
 	}
