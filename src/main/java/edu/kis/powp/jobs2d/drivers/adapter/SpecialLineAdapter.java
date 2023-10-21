@@ -7,6 +7,8 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 
 public class SpecialLineAdapter implements Job2dDriver
 {
+    public static boolean specialLineColorFlag = true;
+
     private int x, y;
     private DrawPanelController drawPanelController;
 
@@ -25,7 +27,7 @@ public class SpecialLineAdapter implements Job2dDriver
     @Override
     public void operateTo(int i, int i1)
     {
-        ILine line = LineFactory.getSpecialLine();
+        ILine line = specialLineColorFlag ? LineFactory.getSpecialLine() : LineFactory.getDottedLine();
         line.setStartCoordinates(x, y);
         line.setEndCoordinates(i, i1);
         setPosition(i, i1);
