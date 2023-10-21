@@ -9,6 +9,7 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DummyDrawingAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -18,6 +19,10 @@ public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	public static final String FIGURE_JOE_1_NAME = "Figure Joe 1";
 	public static final String FIGURE_JOE_2_NAME = "Figure Joe 2";
+
+	public static final String LOGGER_DRIVER_NAME = "Logger Driver";
+	public static final String BUGGY_DRIVER_NAME = "Buggy Simulator";
+	public static final String SPECIAL_DRIVER_NAME = "Special Simulator";
 
 	/**
 	 * Setup test concerning preset figures in context.
@@ -39,11 +44,14 @@ public class TestJobs2dPatterns {
 	 */
 	private static void setupDrivers(Application application) {
 		Job2dDriver loggerDriver = new LoggerDriver();
-		DriverFeature.addDriver("Logger Driver", loggerDriver);
+		DriverFeature.addDriver(LOGGER_DRIVER_NAME, loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
 		Job2dDriver testDriver = new DummyDrawingAdapter(DrawerFeature.getDrawerController());
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		DriverFeature.addDriver(BUGGY_DRIVER_NAME, testDriver);
+
+		Job2dDriver specialDriver = new SpecialLineAdapter(DrawerFeature.getDrawerController());
+		DriverFeature.addDriver(SPECIAL_DRIVER_NAME, specialDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
