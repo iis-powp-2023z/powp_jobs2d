@@ -11,11 +11,11 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.BasicLineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
-import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
-import edu.kis.powp.jobs2d.events.SelectTest2FigureOptionListener;
-import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.events.*;
+import edu.kis.powp.jobs2d.features.CircleFactory;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.features.RectangleFactory;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -42,6 +42,9 @@ public class TestJobs2dPatterns {
 		SelectTest2FigureOptionListener selectSpecialLineAdapterTestOptionListener = new SelectTest2FigureOptionListener(
 				DriverFeature.getDriverManager());
 		application.addTest("Adapter Driver Test (Special Line)", selectSpecialLineAdapterTestOptionListener);
+
+		application.addTest("Draw Rectangle", new DrawRectangleTest());
+		application.addTest("Draw Circle", new DrawCircleTest());
 	}
 
 
