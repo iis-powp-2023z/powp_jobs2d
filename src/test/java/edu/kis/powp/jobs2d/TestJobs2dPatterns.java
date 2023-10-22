@@ -17,6 +17,8 @@ import edu.kis.powp.jobs2d.features.DriverFeature;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	public static final String FIGURE_JOE_1 = "Figure Joe 1";
+	public static final String FIGURE_JOE_2 = "Figure Joe 2";
 
 	/**
 	 * Setup test concerning preset figures in context.
@@ -27,8 +29,8 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest(FIGURE_JOE_1, selectTestFigureOptionListener);
+		application.addTest(FIGURE_JOE_2, selectTestFigureOptionListener);
 
 	}
 
@@ -42,25 +44,13 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new DrawPanelControllerAdapter();
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		Job2dDriver drawPanelControllerAdapter = new DrawPanelControllerAdapter(DrawerFeature.getDrawerController());
+		DriverFeature.addDriver("Draw Panel Controller", drawPanelControllerAdapter);
 
-		Job2dDriver LineDrawerAdapter = new LineDrawerAdapter();
+		Job2dDriver LineDrawerAdapter = new LineDrawerAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Line Drawer", LineDrawerAdapter);
 
 		DriverFeature.updateDriverInfo();
-	}
-
-	/**
-	 * Auxiliary routines to enable using Buggy Simulator.
-	 *
-	 * @param application Application context.
-	 */
-	private static void setupDefaultDrawerVisibilityManagement(Application application) {
-		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(true);
 	}
 
 	/**
