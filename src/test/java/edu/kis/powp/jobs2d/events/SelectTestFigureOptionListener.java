@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-import edu.kis.powp.jobs2d.TestJobs2dPatterns;
+import edu.kis.powp.factory.Square;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
+import edu.kis.powp.jobs2d.TestJobs2dPatterns;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
@@ -22,6 +23,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 		} else if (Objects.equals(e.getActionCommand(), TestJobs2dPatterns.FIGURE_JOE_2)) {
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+		} else if (e.getActionCommand() == TestJobs2dPatterns.SQUARE) {
+			Square square = new Square(driverManager.getCurrentDriver());
+			square.figureScript();
 		}
 	}
 }
