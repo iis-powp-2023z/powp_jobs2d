@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 import edu.kis.powp.factory.Square;
+import edu.kis.powp.factory.Triangle;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.powp.jobs2d.TestJobs2dPatterns;
@@ -26,6 +27,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 		} else if (e.getActionCommand() == TestJobs2dPatterns.SQUARE) {
 			Square square = new Square(driverManager.getCurrentDriver());
 			square.figureScript();
+		} else if (e.getActionCommand() == TestJobs2dPatterns.TRIANGLE) {
+			Triangle triangle = new Triangle(driverManager.getCurrentDriver());
+			triangle.figureScript();
 		}
 	}
 }

@@ -20,6 +20,7 @@ public class TestJobs2dPatterns {
 	public static final String FIGURE_JOE_1 = "Figure Joe 1";
 	public static final String FIGURE_JOE_2 = "Figure Joe 2";
 	public static final String SQUARE = "Square";
+	public static final String TRIANGLE = "Triangle";
 
 	/**
 	 * Setup test concerning preset figures in context.
@@ -33,6 +34,7 @@ public class TestJobs2dPatterns {
 		application.addTest(FIGURE_JOE_1, selectTestFigureOptionListener);
 		application.addTest(FIGURE_JOE_2, selectTestFigureOptionListener);
 		application.addTest(SQUARE, selectTestFigureOptionListener);
+		application.addTest(TRIANGLE, selectTestFigureOptionListener);
 	}
 
 	/**
