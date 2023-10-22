@@ -19,6 +19,8 @@ public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	public static final String FIGURE_JOE_1_NAME = "Figure Joe 1";
 	public static final String FIGURE_JOE_2_NAME = "Figure Joe 2";
+	public static final String FIGURE_SQUARE_NAME = "Square";
+	public static final String FIGURE_TRIANGLE_NAME = "Triangle";
 
 	public static final String LOGGER_DRIVER_NAME = "Logger Driver";
 	public static final String BUGGY_DRIVER_NAME = "Buggy Simulator";
@@ -35,6 +37,8 @@ public class TestJobs2dPatterns {
 
 		application.addTest(FIGURE_JOE_1_NAME, selectTestFigureOptionListener);
 		application.addTest(FIGURE_JOE_2_NAME, selectTestFigureOptionListener);
+		application.addTest(FIGURE_SQUARE_NAME, selectTestFigureOptionListener);
+		application.addTest(FIGURE_TRIANGLE_NAME, selectTestFigureOptionListener);
 	}
 
 	/**

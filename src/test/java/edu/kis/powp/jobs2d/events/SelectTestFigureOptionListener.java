@@ -1,5 +1,6 @@
 package edu.kis.powp.jobs2d.events;
 
+import edu.kis.powp.command.FigureFactory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
@@ -26,6 +27,12 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				break;
 			case FIGURE_JOE_2_NAME:
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+				break;
+			case FIGURE_SQUARE_NAME:
+				FigureFactory.getSquare(driverManager.getCurrentDriver()).execute();
+				break;
+			case FIGURE_TRIANGLE_NAME:
+				FigureFactory.getTriangle(driverManager.getCurrentDriver()).execute();
 				break;
 		}
 	}
