@@ -6,12 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TriangleFactory {
-    private Job2dDriver driver;
-
-    public TriangleFactory(Job2dDriver driver){
-        this.driver = driver;
-    }
-
     public ComplexCommand createTriangle(){
         List<DriverCommand> complex = new ArrayList<>();
 

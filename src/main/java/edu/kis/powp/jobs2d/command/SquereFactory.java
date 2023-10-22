@@ -6,11 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SquereFactory {
-    private Job2dDriver driver;
-
-    public SquereFactory(Job2dDriver driver){
-        this.driver = driver;
-    }
 
     public ComplexCommand createSquere(){
         List<DriverCommand> complex = new ArrayList<>();
