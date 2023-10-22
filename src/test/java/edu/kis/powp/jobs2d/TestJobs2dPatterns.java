@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import edu.kis.legacy.drawer.shape.ILine;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
@@ -44,9 +46,11 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DrawPanelJob2dDriverAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Drawer Simulator", testDriver);
 
-		Job2dDriver lineDriver = new SpecialLineDrawAdapter(DrawerFeature.getDrawerController());
-		DriverFeature.addDriver("Line Simulator", lineDriver);
+		SpecialLineDrawAdapter lineDrawAdapter = new SpecialLineDrawAdapter(DrawerFeature.getDrawerController());
+		ILine line = LineFactory.getSpecialLine();
+		lineDrawAdapter.setLine(line);
 
+		DriverFeature.addDriver("Line Simulator", lineDrawAdapter);
 
 		DriverFeature.updateDriverInfo();
 	}
