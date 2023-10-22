@@ -18,6 +18,11 @@ import edu.kis.powp.jobs2d.features.DriverFeature;
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+	public final static String FIGURE_JOE_1 = "Figure Joe 1";
+	public final static String FIGURE_JOE_2 = "Figure Joe 2";
+	public final static String DRAW_RECTANGLE = "Draw Rectangle";
+	public final static String DRAW_TRIANGLE = "Draw Triangle";
+
 	/**
 	 * Setup test concerning preset figures in context.
 	 * 
@@ -27,8 +32,10 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest(FIGURE_JOE_1, selectTestFigureOptionListener);
+		application.addTest(FIGURE_JOE_2, selectTestFigureOptionListener);
+		application.addTest(DRAW_RECTANGLE, selectTestFigureOptionListener);
+		application.addTest(DRAW_TRIANGLE, selectTestFigureOptionListener);
 	}
 
 	/**
