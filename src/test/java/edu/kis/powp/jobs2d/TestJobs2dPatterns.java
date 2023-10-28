@@ -16,6 +16,7 @@ import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineDrawAdapter;
+import edu.kis.powp.jobs2d.models.Figures;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -29,8 +30,10 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest(String.valueOf(Figures.FIGURE_JOE_1), selectTestFigureOptionListener);
+		application.addTest(String.valueOf(Figures.FIGURE_JOE_2), selectTestFigureOptionListener);
+		application.addTest(String.valueOf(Figures.RECTANGLE), selectTestFigureOptionListener);
+		application.addTest(String.valueOf(Figures.CIRCLE), selectTestFigureOptionListener);
 	}
 
 	/**
