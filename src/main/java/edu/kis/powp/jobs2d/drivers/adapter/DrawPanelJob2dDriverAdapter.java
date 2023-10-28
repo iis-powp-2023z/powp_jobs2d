@@ -1,18 +1,20 @@
 package edu.kis.powp.jobs2d.drivers.adapter;
 
+
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.jobs2d.Job2dDriver;
 
 /**
- * driver adapter to drawer with several bugs.
+ * driver adapter to drawer.
  */
-public class MyAdapter extends DrawPanelController implements Job2dDriver {
+public class DrawPanelJob2dDriverAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
+	private final DrawPanelController drawPanelController;
 
-	public MyAdapter() {
-		super();
+	public DrawPanelJob2dDriverAdapter(DrawPanelController controller) {
+		this.drawPanelController = controller;
 	}
 
 	@Override
@@ -27,11 +29,13 @@ public class MyAdapter extends DrawPanelController implements Job2dDriver {
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
 
-		drawLine(line);
+		setPosition(x, y);
+
+		this.drawPanelController.drawLine(line);
 	}
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "DrawPanelJob2dDriverAdapter";
 	}
 }
