@@ -24,6 +24,6 @@ public class Square {
 		commands.add(new OperateToCommand(driver, -120, -120));
 
 		ComplexCommand complexCommand = new ComplexCommand(commands);
-		complexCommand.run();
+		complexCommand.execute();
 	}
 }
