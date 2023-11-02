@@ -7,12 +7,15 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.MyAdapter;
-import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
-import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.drivers.adapter.BasicLineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.events.*;
+import edu.kis.powp.jobs2d.features.CircleFactory;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.features.RectangleFactory;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -26,8 +29,24 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
+		SelectTest2FigureOptionListener selectTestFigure2OptionListener = new SelectTest2FigureOptionListener(
+				DriverFeature.getDriverManager());
+
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Pata Terna Test", selectTestFigure2OptionListener);
+
+		SelectTest2FigureOptionListener selectAdapterTestOptionListener = new SelectTest2FigureOptionListener(
+				DriverFeature.getDriverManager());
+		application.addTest("Adapter Driver Test (Basic Line)", selectAdapterTestOptionListener);
+
+		SelectTest2FigureOptionListener selectSpecialLineAdapterTestOptionListener = new SelectTest2FigureOptionListener(
+				DriverFeature.getDriverManager());
+		application.addTest("Adapter Driver Test (Special Line)", selectSpecialLineAdapterTestOptionListener);
+
+		application.addTest("Draw Rectangle", new DrawRectangleTest());
+		application.addTest("Draw Circle", new DrawCircleTest());
 	}
+
 
 	/**
 	 * Setup driver manager, and set default driver for application.
@@ -39,11 +58,18 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new MyAdapter();
+		Job2dDriver testDriver = new BasicLineDrawerAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
+
+		Job2dDriver adapterDriverBasicLine = new LineDrawerAdapter(LineFactory.getBasicLine());
+		DriverFeature.addDriver("Adapter Driver (Basic Line)", adapterDriverBasicLine);
+
+		Job2dDriver adapterDriverSpecialLine = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Adapter Driver (Special Line)", adapterDriverSpecialLine);
 
 		DriverFeature.updateDriverInfo();
 	}
+
 
 	/**
 	 * Auxiliary routines to enable using Buggy Simulator.
@@ -54,7 +80,7 @@ public class TestJobs2dPatterns {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
 		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
 				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(true);
+		defaultDrawerWindow.setVisible(false);
 	}
 
 	/**

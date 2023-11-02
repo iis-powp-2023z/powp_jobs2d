@@ -1,7 +1,9 @@
 package edu.kis.powp.jobs2d;
 
-import edu.kis.powp.jobs2d.Job2dDriver;
-import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
+import edu.kis.powp.jobs2d.drivers.BasicJob2dDriver;
+import edu.kis.powp.jobs2d.command.DriverCommand;
+import edu.kis.powp.jobs2d.command.OperateToCommand;
+import edu.kis.powp.jobs2d.command.SetPositionCommand;
 
 /**
  * Plotter test.
@@ -9,13 +11,17 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
  * @author Dominik
  */
 public class Job2dDriverTest {
-	private static Job2dDriver driver = new StubDriver();
+	private static Job2dDriver driver = new BasicJob2dDriver();
 
 	/**
 	 * Driver test.
 	 */
 	public static void main(String[] args) {
-		FiguresJoe.figureScript1(driver);
+		DriverCommand setPositionCommand = new SetPositionCommand(0, 0);
+		DriverCommand operateToCommand = new OperateToCommand(100, 100);
+
+		setPositionCommand.execute(driver);
+		operateToCommand.execute(driver);
 	}
 
 	private static class StubDriver implements Job2dDriver {
