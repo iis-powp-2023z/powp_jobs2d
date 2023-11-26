@@ -15,7 +15,6 @@ public class RectangleFactory implements ShapeFactory {
     public ComplexCommand createShape(Job2dDriver driver) {
         List<DriverCommand> commands = new ArrayList<>();
 
-        // Add commands for drawing a rectangle
         commands.add(new SetPosition(0, 0));
         commands.add(new OperateTo(0, 70));
         commands.add(new OperateTo(100, 70));
